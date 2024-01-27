@@ -1,11 +1,9 @@
 import cv2
 import numpy as np
-from tensorflow import keras
-from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing.image import img_to_array
+import tensorflow as tf
 
 # Load the trained model
-model = load_model('facial_expression_model_architecture.h5')  
+model = tf.keras.models.load_model('SerenityHacks/facial_expression_model_architecture.h5')  
 emotion_labels = ['Angry', 'Disgust', 'Fear', 'Happy', 'Sad', 'Surprise', 'Neutral']
 
 # Initialize the webcam
