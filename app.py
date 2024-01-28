@@ -1,13 +1,15 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify, Response
+from flask import Flask, render_template, jsonify, Response
 import cv2
 import numpy as np
 from tensorflow.keras.models import load_model
-from flask import Response
+from datetime import datetime
 import os
 
 emotion_labels = ['Angry', 'Disgust', 'Fear', 'Happy', 'Sad', 'Surprise', 'Neutral']
-model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),'facial_expression_model_architecture.h5')
+model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'facial_expression_model_architecture.h5')
 model = load_model(model_path)
+
+emotion_log_file = 'emotion_log.txt'  # Specify the path to your text file
 
 def generate_frames():
     cap = cv2.VideoCapture(0)
@@ -27,13 +29,21 @@ def generate_frames():
         emotion_probabilities = emotion_model.predict(input_data)[0]
         detected_emotion = emotion_labels[np.argmax(emotion_probabilities)]
 
+        # Save detected emotion to the text file
+        save_emotion_to_file(detected_emotion)
+
         cv2.putText(frame, f'Emotion: {detected_emotion}', (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
 
         _, buffer = cv2.imencode('.jpg', frame)
         frame = buffer.tobytes()
         yield (b'--frame\r\n'
             b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
-        
+
+def save_emotion_to_file(emotion):
+    with open(emotion_log_file, 'a') as file:
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        file.write(f'{timestamp} - {emotion}\n')
+
 app = Flask(__name__)
 app.static_folder = 'static'
 
@@ -68,7 +78,6 @@ def home():
     detected_emotion = emotion_labels[np.argmax(emotion_probabilities)]
 
     return render_template('home.html', detected_emotion=detected_emotion)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
