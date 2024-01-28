@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moodify</title>
+    <link rel="stylesheet" href="Main.css"> 
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+           
+            <img src="logo.png" class="logo">
+            
+            <div class ="content">
+                <h1>AI</h1>
+                <p style="margin-bottom: 40px;"> Click the button below to open the camera...</p>
+                <button class="ai-button" onclick="openCamera()">Open Camera</button>
+            </div>
+        </div>
+        
+        <script>
+            function openCamera() {
+                try {
+                    navigator.mediaDevices.getUserMedia({ video: true })
+                        .then(stream => console.log('Camera opened successfully:', stream))
+                        .catch(error => console.error('Error opening camera:', error));
+                } catch (error) {
+                    console.error('Error opening camera:', error);
+                }
+            }
+        </script>
+        </div>
+        </div>
+
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Page</title>
+    <link rel="stylesheet" href="Happy.css">
+</head>
+<body>
+    <!-- Logo -->
+    <a href="Main.html">
+        <img src="logo.png" class="logo">
+    </a>
+
+    <div class="happy-page">
+        <div class="content-container">
+            <h1>What are 3 things that you feel grateful for?</h1>
+            <textarea class="grateful-textfield" placeholder="Write your thoughts here..."></textarea>
+            <h1>Write a note to your future self</h1>
+            <textarea class="note-textfield" placeholder="Write your note here..."></textarea>
+            <button class="save-button" onclick="redirectToMain()">Save</button>
+        </div>
+    </div>
+
+    <script>
+        function redirectToMain() {
+            // Redirect to Main.html
+            window.location.href = 'Main.html';
+        }
+    </script>
+</body>
+</html>

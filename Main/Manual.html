@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual</title>
+    <link rel="stylesheet" href="Manual.css"> 
+</head>
+<body>
+    <a href="Main.html">
+        <img src="logo.png" class="logo">
+    </a>
+
+    <div class="rounded-container">
+        <div class="title">
+            <h1>How are you feeling today?</h1>
+        </div>
+        <div class="row">
+            <div class="column">
+                <a href="Happy.html"> <!-- Update this line to point to happy.html -->
+                    <img id="myImage1" src="HappyStatic.gif" onmouseover="changeImage1()" onmouseout="restoreImage1()">
+                </a>
+                <script>
+                    function changeImage1() {
+                        document.getElementById('myImage1').src = 'Happy.gif';
+                    }
+                
+                    function restoreImage1() {
+                        document.getElementById('myImage1').src = 'HappyStatic.gif';
+                    }
+                </script>
+            </div>
+            <div class="column">
+                <a href="Sad.html">
+                    <img id="myImage2" src="SadStatic.gif" onmouseover="changeImage2()" onmouseout="restoreImage2()">
+                </a>
+                <script>
+                    function changeImage2() {
+                        document.getElementById('myImage2').src = 'Sad.gif';
+                    }
+                
+                    function restoreImage2() {
+                        document.getElementById('myImage2').src = 'SadStatic.gif';
+                    }
+                </script>
+            </div>
+            <div class="column">
+                <a href="./Angry/options.html">
+                    <img id="myImage3" src="MadStatic.gif" alt="Description" onmouseover="changeImage3()" onmouseout="restoreImage3()" style="height: 250px;">
+                </a>
+                <script>
+                    function changeImage3() {
+                        document.getElementById('myImage3').src = 'Mad.gif';
+                    }
+                
+                    function restoreImage3() {
+                        document.getElementById('myImage3').src = 'MadStatic.gif';
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to left, #7dbb74, #6caedd, #b46969);
+}
+
+.logo {
+  position: fixed;
+  max-height: 80px;
+  min-height: auto;
+  left: 0;
+  top: 0;
+  width: 240px;
+}
+
+.title {
+  padding: 0;
+  margin: 0;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 4px; /* Adjust the spacing between each character */
+  font-size: 15px; /* Set the font size in pixels */
+}
+
+.rounded-container {
+  margin: 10px;
+  width: 85%;
+  height: calc(50vh - 10px);
+  border-radius: 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-align: center;
+  padding: 20px;
+}
+
+.rounded-container h1 {
+  color: whitesmoke;
+  text-align: center;
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.column {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+  margin: 5px;
+}
+
+.column img {
+  width: 25%;
+  height: auto;
+}
+
+#myImage1 {
+  height: auto;
+  margin-top: 60px;
+  margin-bottom: 10px;
+}
+
+#myImage2 {
+  height: auto;
+  margin-top: 35px;
+  margin-bottom: 10px;
+}
+
+#myImage3 {
+  height: 250px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.bottom-anchor {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}

@@ -1,0 +1,60 @@
+/* Happy.css */
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Optional: prevents scrolling */
+}
+
+.happy-page {
+    height: 100vh;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.36),rgba(0, 0, 0, 0.36)), url('https://img.freepik.com/free-photo/abstract-luxury-soft-red-background-christmas-valentines-layout-design-studio-room-web-template-business-report-with-smooth-circle-gradient-color_1258-71575.jpg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.content-container {
+    text-align: center;
+    color: rgb(215, 209, 161);
+    text-shadow: 1px 1px 0 rgb(143, 119, 119); 
+    
+}
+
+.grateful-textfield,
+.note-textfield {
+    width: 80%;
+    margin: 10px 0;
+    padding: 40px;
+    border: none;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.save-button {
+    font-size: 1em;
+    padding: 10px 30px;
+    margin: 30px 5px;
+    border: 2px solid white;
+    border-radius: 10px;
+    background: transparent;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.logo{
+    position: fixed;
+    max-height: 70px;
+    min-height: auto;
+    left: 0px;
+    width:180px;
+
+}
