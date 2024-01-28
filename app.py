@@ -9,9 +9,12 @@ emotion_labels = ['Angry', 'Disgust', 'Fear', 'Happy', 'Sad', 'Surprise', 'Neutr
 model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'facial_expression_model_architecture.h5')
 model = load_model(model_path)
 
-emotion_log_file = 'emotion_log.txt'  # Specify the path to your text file
+emotion_log_file = 'emotion_log.txt' # Specify the path to your text file
 
-def generate_frames():
+# Global counter to keep track of the number of detected emotions
+detected_emotions_count = 0
+
+def generate_frames(detected_emotions_count):
     cap = cv2.VideoCapture(0)
 
     while True:
@@ -29,8 +32,12 @@ def generate_frames():
         emotion_probabilities = emotion_model.predict(input_data)[0]
         detected_emotion = emotion_labels[np.argmax(emotion_probabilities)]
 
-        # Save detected emotion to the text file
-        save_emotion_to_file(detected_emotion)
+        # Save detected emotion to the text file only if it's the 5th one
+        if detected_emotions_count == 4:
+            save_emotion_to_file(detected_emotion)
+            detected_emotions_count += 1
+        elif detected_emotions_count < 4:
+            detected_emotions_count += 1
 
         cv2.putText(frame, f'Emotion: {detected_emotion}', (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
 
@@ -49,7 +56,7 @@ app.static_folder = 'static'
 
 @app.route('/video_feed')
 def video_feed():
-    return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
+    return Response(generate_frames(detected_emotions_count), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @app.route('/get_detected_emotion')
 def get_detected_emotion():
