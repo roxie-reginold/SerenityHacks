@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, Response
+from flask import Flask, render_template, jsonify, Response, redirect
 import cv2
 import numpy as np
 from tensorflow.keras.models import load_model
@@ -48,8 +48,7 @@ def generate_frames(detected_emotions_count):
 
 def save_emotion_to_file(emotion):
     with open(emotion_log_file, 'a') as file:
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        file.write(f'{timestamp} - {emotion}\n')
+        file.write(f'{emotion}\n')
 
 app = Flask(__name__)
 app.static_folder = 'static'
@@ -84,7 +83,13 @@ def home():
     emotion_probabilities = model.predict(input_data)[0]
     detected_emotion = emotion_labels[np.argmax(emotion_probabilities)]
 
-    return render_template('home.html', detected_emotion=detected_emotion)
+    if detected_emotion == 'Happy':
+        return render_template('happy.html', detected_emotion=detected_emotion)
+    elif detected_emotion == 'Sad':
+        return render_template('sad.html', detected_emotion=detected_emotion)
+    else:
+        return render_template('home.html', detected_emotion=detected_emotion)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
