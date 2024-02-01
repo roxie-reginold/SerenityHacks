@@ -1,4 +1,3 @@
-
 # Real-time Emotion Detection Web Application
 
 ## Overview
