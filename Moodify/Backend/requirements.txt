@@ -9,3 +9,6 @@ jupyter
 notebook
 Flask
 flask_sqlalchemy
+nbconvert>=7.17.0 # not directly required, pinned by Snyk to avoid a vulnerability
+protobuf>=5.29.6 # not directly required, pinned by Snyk to avoid a vulnerability
+zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
